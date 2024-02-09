@@ -22,6 +22,7 @@ class _RealtimeInputAppState extends State<RealtimeInputApp> {
 
   @override
   void dispose() {
+    realtimeInputController.clearState();
     DMethod.printBasic('dispose() - RealtimeInputApp');
     super.dispose();
   }
@@ -64,4 +65,8 @@ class RealtimeInputController extends GetxController {
   final _input = 'Input Initial'.obs;
   String get input => _input.value;
   set input(String n) => _input.value = n;
+
+  clearState() {
+    Get.delete<RealtimeInputController>(force: true);
+  }
 }
